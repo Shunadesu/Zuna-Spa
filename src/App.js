@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
+import SmartBookingButton from './components/SmartBookingButton';
 import ScrollToTop from './components/ScrollToTop';
 
 // Pages
@@ -47,7 +48,7 @@ function App() {
           </main>
           <Footer />
           <ChatWidget />
-         
+          <SmartBookingButton />
         </div>
       </Router>
     </ThemeProvider>

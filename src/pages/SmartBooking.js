@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
 
-const Booking = () => {
+const SmartBooking = () => {
   const { theme } = useContext(ThemeContext);
   const [currentStep, setCurrentStep] = useState(1);
   const [bookingData, setBookingData] = useState({
@@ -119,28 +119,6 @@ const Booking = () => {
       category: 'therapy',
       benefits: ['Giảm đau nhức', 'Tăng cường sức khỏe', 'Thư giãn toàn thân'],
       suitableFor: ['pain', 'stress', 'tired']
-    },
-    {
-      id: 5,
-      name: 'Aromatherapy Massage',
-      price: 600000,
-      duration: '75 phút',
-      description: 'Massage với tinh dầu thiên nhiên giúp thư giãn tinh thần',
-      image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80',
-      category: 'massage',
-      benefits: ['Thư giãn tinh thần', 'Cải thiện tâm trạng', 'Giảm lo âu'],
-      suitableFor: ['stress', 'anxiety', 'normal']
-    },
-    {
-      id: 6,
-      name: 'Facial Treatment',
-      price: 900000,
-      duration: '105 phút',
-      description: 'Trị liệu da mặt chuyên sâu với công nghệ hiện đại',
-      image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80',
-      category: 'skincare',
-      benefits: ['Trẻ hóa da', 'Giảm nếp nhăn', 'Làm sáng da'],
-      suitableFor: ['aging', 'dry', 'combination']
     }
   ];
 
@@ -162,15 +140,6 @@ const Booking = () => {
       discountPrice: 1700000,
       description: 'Chăm sóc da mặt + Trị liệu cơ thể',
       image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80'
-    },
-    {
-      id: 3,
-      name: 'Gói Premium',
-      services: [2, 3, 6],
-      originalPrice: 2600000,
-      discountPrice: 2200000,
-      description: 'Massage đá nóng + Chăm sóc da + Facial treatment',
-      image: 'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80'
     }
   ];
 
@@ -194,7 +163,6 @@ const Booking = () => {
       recommendations.push(...services.filter(s => s.suitableFor.includes('tired')));
     }
     
-    // Remove duplicates and limit to 3
     return [...new Set(recommendations)].slice(0, 3);
   };
 
@@ -208,7 +176,7 @@ const Booking = () => {
       const currentHour = today.getHours();
       return timeSlots.filter(slot => {
         const slotHour = parseInt(slot.split(':')[0]);
-        return slotHour > currentHour + 1; // Available slots 1 hour from now
+        return slotHour > currentHour + 1;
       });
     }
     
@@ -251,7 +219,6 @@ const Booking = () => {
     e.preventDefault();
     setIsLoading(true);
     
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
     
     console.log('Booking submitted:', bookingData);
@@ -367,30 +334,6 @@ const Booking = () => {
                         ))}
                       </div>
                     </div>
-
-                    {/* Stress Level */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-3">Mức độ căng thẳng:</label>
-                      <div className="grid grid-cols-3 gap-3">
-                        {[
-                          { value: 'low', label: 'Thấp', color: 'bg-green-100 text-green-800' },
-                          { value: 'medium', label: 'Trung bình', color: 'bg-yellow-100 text-yellow-800' },
-                          { value: 'high', label: 'Cao', color: 'bg-red-100 text-red-800' }
-                        ].map((level) => (
-                          <button
-                            key={level.value}
-                            onClick={() => setBookingData({...bookingData, stressLevel: level.value})}
-                            className={`p-3 rounded-lg border-2 transition-all duration-300 ${
-                              bookingData.stressLevel === level.value
-                                ? `${themeColors.border} ${themeColors.bgLight}`
-                                : 'border-gray-200 hover:border-gray-300'
-                            }`}
-                          >
-                            {level.label}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
                   </div>
 
                   {/* AI Recommendations */}
@@ -465,7 +408,7 @@ const Booking = () => {
                     Chọn gói dịch vụ (tùy chọn)
                   </h2>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {packages.map((pkg) => (
                       <div
                         key={pkg.id}
@@ -526,7 +469,7 @@ const Booking = () => {
                       type="date"
                       name="date"
                       value={bookingData.date}
-                      onChange={handleDateSelect}
+                      onChange={(e) => handleDateSelect(e.target.value)}
                       min={new Date().toISOString().split('T')[0]}
                       className="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                     />
@@ -730,4 +673,4 @@ const Booking = () => {
   );
 };
 
-export default Booking; 
+export default SmartBooking; 

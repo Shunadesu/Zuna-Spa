@@ -30,8 +30,8 @@ const PromoBar = () => {
   const buttonClass = buttonColors[theme] || buttonColors.pink;
 
   return (
-    <div className={`w-full ${bg} text-white text-sm sm:text-base flex flex-col sm:flex-row items-center justify-center py-2 px-2 gap-2`} style={{minHeight: '44px'}}>
-      <span className="font-semibold mr-2 whitespace-nowrap">🎉 Khuyến mãi đặc biệt: Giảm 20% cho tất cả dịch vụ!</span>
+    <div className={`w-full ${bg} text-white text-xs sm:text-sm flex flex-col sm:flex-row items-center justify-center p-2 gap-1`} style={{minHeight: '10px'}}>
+      <span className="font-medium mr-1 whitespace-nowrap">🎉 Khuyến mãi đặc biệt: Giảm 20% cho tất cả dịch vụ!</span>
       <span className="hidden sm:inline">|</span>
       <span className="flex items-center gap-1">
         <span className="mr-1 whitespace-nowrap">Kết thúc sau:</span>
@@ -39,8 +39,8 @@ const PromoBar = () => {
       </span>
       <Link
         to="/booking"
-        className={`ml-2 ${buttonClass} font-semibold px-4 py-2 rounded shadow-sm transition-colors text-xs sm:text-sm border border-white`}
-        style={{whiteSpace: 'nowrap', minHeight: '36px', display: 'flex', alignItems: 'center'}}
+        className={`ml-1 ${buttonClass} font-medium px-3 py-2 rounded shadow-sm transition-colors text-md border border-white`}
+        style={{whiteSpace: 'nowrap', display: 'flex', alignItems: 'center'}}
       >
         Đặt lịch ngay
       </Link>
