@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import CountdownTimer from '../components/CountdownTimer';
 import ParallaxHero from '../components/ParallaxHero';
 import ParticleBackground from '../components/ParticleBackground';
 import MorphingShapes from '../components/MorphingShapes';

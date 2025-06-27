@@ -4,7 +4,6 @@ import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ChatWidget from './components/ChatWidget';
-import CountdownTimer from './components/CountdownTimer';
 import ScrollToTop from './components/ScrollToTop';
 
 // Pages

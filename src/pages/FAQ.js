@@ -6,7 +6,6 @@ const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [openItems, setOpenItems] = useState(new Set());
-  const [openItem, setOpenItem] = useState(null);
 
   // Function to get theme colors
   const getThemeColors = () => {

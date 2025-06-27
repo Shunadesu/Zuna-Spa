@@ -6,7 +6,7 @@ import PromoBar from './PromoBar';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const { theme, themes, changeTheme } = useContext(ThemeContext);
+  const { theme, changeTheme } = useContext(ThemeContext);
 
   const navItems = [
     { name: 'Trang chủ', path: '/' },
@@ -23,9 +23,6 @@ const Navbar = () => {
     { name: 'Xanh lá', value: 'green', color: 'bg-emerald-500' },
     { name: 'Cam đào', value: 'orange', color: 'bg-orange-500' }
   ];
-
-  // Fallback to pink theme if current theme is not found
-  const currentTheme = themes[theme] || themes['pink'];
 
   // Function to get button classes based on theme
   const getButtonClasses = () => {

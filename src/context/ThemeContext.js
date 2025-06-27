@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 
 const ThemeContext = createContext();
 
@@ -13,7 +13,7 @@ export const useTheme = () => {
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('pink');
 
-  const themes = {
+  const themes = useMemo(() => ({
     'pink': {
       primary: 'pink',
       secondary: 'pink-pastel',
@@ -64,7 +64,7 @@ export const ThemeProvider = ({ children }) => {
       light: 'orange-50',
       border: 'orange-200'
     }
-  };
+  }), []);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') || 'pink';
@@ -74,7 +74,7 @@ export const ThemeProvider = ({ children }) => {
       setTheme('pink');
       localStorage.setItem('theme', 'pink');
     }
-  }, []);
+  }, [themes]);
 
   const changeTheme = (newTheme) => {
     if (themes[newTheme]) {

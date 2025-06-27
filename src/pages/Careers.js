@@ -1,8 +1,6 @@
-import React, { useState, useContext } from 'react';
-import { ThemeContext } from '../context/ThemeContext';
+import React, { useState } from 'react';
 
 const Careers = () => {
-  const { theme } = useContext(ThemeContext);
   const [selectedDepartment, setSelectedDepartment] = useState('all');
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
